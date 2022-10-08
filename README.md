@@ -4,7 +4,7 @@
 
 # Pokedex
 
-Este proyecto tiene como objetivo brindar un Rest-API sobre los Pokémon.
+Este proyecto tiene como objetivo brindar un «Rest-API» sobre los Pokémon.
 
 ## Descripción
 
@@ -16,29 +16,41 @@ Nota: Agregar la descripción del proyecto.
 $ yarn install
 ```
 
+## Base de datos
+
+Se utiliza `docker` como contenedor, y `mongo` como base de datos. Los datos son persistido local
+mente en la carpeta `./mongo`.
+
+_Nota: Se utiliza `docker-compose` para la creación del contenedor de la base de datos._
+
+```bash
+# Para ejecutar el contenedor y levantar la base de datos.
+$ docker-compose up -d
+```
+
 ## Ejecutando la aplicación
 
 ```bash
-# development
+# «development»
 $ yarn start
 
-# watch mode
+# «watch mode»
 $ yarn start:dev
 
-# production mode
+# «production mode»
 $ yarn start:prod
 ```
 
 ## Pruebas
 
 ```bash
-# unit tests
+# «unit tests»
 $ yarn test
 
-# e2e tests
+# «e2e tests»
 $ yarn test:e2e
 
-# test coverage
+# «test coverage»
 $ yarn test:cov
 ```
 
