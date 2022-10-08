@@ -4,7 +4,7 @@
 
 # Pokedex
 
-Este proyecto tiene como objetivo brindar un Rest-API sobre los Pokemón.
+Este proyecto tiene como objetivo brindar un Rest-API sobre los Pokémon.
 
 ## Descripción
 
