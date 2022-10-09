@@ -75,7 +75,9 @@
         "testEnvironment": "node",
         "moduleNameMapper": {
             "^@/(.*)$": "<rootDir>/../src/$",
-            "^@pokemon/(.*)$": "<rootDir>/../src/pokemon/$"
+            "^@pokemon/(.*)$": "<rootDir>/../src/pokemon/$",
+            "^@common/(.*)$": "<rootDir>/../src/common/$",
+            "^@pipes/(.*)$": "<rootDir>/../src/common/pipes/$"
         }
     }
 }

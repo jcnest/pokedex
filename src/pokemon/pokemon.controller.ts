@@ -9,9 +9,9 @@ import {
     HttpCode,
     HttpStatus,
 } from '@nestjs/common';
+import { ParseMongoIdPipe } from '@pipes/parse-mongo-id.pipe';
 import { PokemonService } from './pokemon.service';
 import { CreatePokemonDto, UpdatePokemonDto } from './dto';
-import { ParseMongoIdPipe } from '../common/pipes/parse-mongo-id.pipe';
 
 @Controller('pokemon')
 export class PokemonController {

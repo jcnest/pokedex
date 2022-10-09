@@ -19,7 +19,9 @@
         "noFallthroughCasesInSwitch": false,
         "paths": {
             "@/*": ["src/*"],
-            "@pokemon/*": ["src/pokemon/*"]
+            "@pokemon/*": ["src/pokemon/*"],
+            "@common/*": ["src/common/*"],
+            "@pipes/*": ["src/common/pipes/*"]
         }
     }
 }
