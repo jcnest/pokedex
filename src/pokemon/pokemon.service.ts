@@ -5,7 +5,7 @@ import {
     NotFoundException,
 } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
-import { isValidObjectId, Model } from 'mongoose';
+import { isValidObjectId, Model, MongooseError } from 'mongoose';
 import { CreatePokemonDto, UpdatePokemonDto } from './dto';
 import { Pokemon } from './entities/pokemon.entity';
 
@@ -23,19 +23,7 @@ export class PokemonService {
             });
             return pokemon;
         } catch (error) {
-            if (error.code === 11000) {
-                throw new BadRequestException(
-                    `Pokemon already exists in db: ${JSON.stringify(
-                        error.keyValue,
-                    )}`,
-                );
-            }
-
-            //TODO: Identificar otros posibles errores.
-            console.log(error);
-            throw new InternalServerErrorException(
-                `Can't create Pokemon - Check server logs.`,
-            );
+            this.handleExceptions(error, `Can't create Pokemon`);
         }
     }
 
@@ -61,11 +49,35 @@ export class PokemonService {
         return pokemon;
     }
 
-    update(id: string, updatePokemonDto: UpdatePokemonDto) {
-        return `This action updates a #${id} pokemon`;
+    async update(term: string, updatePokemonDto: UpdatePokemonDto) {
+        const pokemon = await this.findOne(term);
+        if (updatePokemonDto.name)
+            updatePokemonDto.name = updatePokemonDto.name.toLowerCase();
+
+        try {
+            await pokemon.updateOne(updatePokemonDto);
+            return { ...pokemon.toJSON(), ...updatePokemonDto };
+        } catch (error) {
+            this.handleExceptions(error, `Can't update Pokemon`);
+        }
     }
 
     remove(id: string) {
         return `This action removes a #${id} pokemon`;
+    }
+
+    private handleExceptions(error: any, internalMessage: string) {
+        if (error.code === 11000) {
+            throw new BadRequestException(
+                `Pokemon already exists in db: ${JSON.stringify(
+                    error.keyValue,
+                )}`,
+            );
+        }
+
+        //TODO: Identificar otros posibles errores.
+        throw new InternalServerErrorException(
+            `${internalMessage || 'Ups!'} - Check server logs.`,
+        );
     }
 }
