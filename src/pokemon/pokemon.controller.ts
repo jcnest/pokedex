@@ -10,10 +10,10 @@ import {
     HttpStatus,
     Query,
 } from '@nestjs/common';
-import { ParseMongoIdPipe } from '@pipes/parse-mongo-id.pipe';
+import { ParseMongoIdPipe } from '@common/pipes';
 import { PaginationDto } from '@common/dto';
-import { PokemonService } from './pokemon.service';
-import { CreatePokemonDto, UpdatePokemonDto } from './dto';
+import { PokemonService } from '@pokemon/pokemon.service';
+import { CreatePokemonDto, UpdatePokemonDto } from '@pokemon/dto';
 
 @Controller('pokemon')
 export class PokemonController {

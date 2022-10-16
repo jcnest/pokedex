@@ -21,7 +21,7 @@
             "@/*": ["src/*"],
             "@pokemon/*": ["src/pokemon/*"],
             "@common/*": ["src/common/*"],
-            "@pipes/*": ["src/common/pipes/*"]
+            "@seed/*": ["src/seed/*"]
         }
     }
 }
