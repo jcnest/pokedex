@@ -28,6 +28,12 @@ _Nota: Se utiliza `docker-compose` para la creación del contenedor de la base d
 $ docker-compose up -d
 ```
 
+Para cargar información de prueba, ejecutar el siguiente endpoint:
+
+```
+GET /api/v2/seed
+```
+
 ## Ejecutando la aplicación
 
 ```bash
@@ -57,3 +63,7 @@ $ yarn test:cov
 ## Licencia
 
 Pkedex es [MIT licensed](LICENSE).
+
+```
+
+```

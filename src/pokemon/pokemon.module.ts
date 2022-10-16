@@ -10,6 +10,7 @@ import { Pokemon, PokemonSchema } from './entities';
             { name: Pokemon.name, schema: PokemonSchema },
         ]),
     ],
+    exports: [MongooseModule],
     controllers: [PokemonController],
     providers: [PokemonService],
 })
